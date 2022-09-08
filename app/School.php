@@ -19,6 +19,7 @@ class School extends Model
         'subscription',
 
 
+
     ];
 
     public function user(){

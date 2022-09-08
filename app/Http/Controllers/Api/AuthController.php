@@ -14,7 +14,10 @@ class AuthController extends Controller
             'name'=>'required|max:55',
             'email'=>'required|email',
             'password'=>'required|confirmed',
+            'school_id'=>'required',
         ]);
+
+
 
         $user = User::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;

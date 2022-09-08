@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TypeController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,15 @@ Route::group(['prefix' => 'types'], function () {
     Route::get('/', [TypeController::class, 'index']);
 
 });
+
+Route::group(['prefix' => 'schools'], function () {
+
+    Route::get('/', [SchoolController::class, 'index']);
+
+});
+
+
+
 
 
 
