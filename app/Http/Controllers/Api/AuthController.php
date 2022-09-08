@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Traits\ResponseTrait;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
+    use ResponseTrait;
     public function register(Request $request){
         $validateData = $request->validate([
             'name'=>'required|max:55',
@@ -18,7 +20,7 @@ class AuthController extends Controller
         ]);
 
 
-
+        $validateData['password'] = bcrypt($request->password);
         $user = User::create($validateData);
         $accessToken = $user->createToken('authToken')->accessToken;
 
@@ -41,7 +43,7 @@ class AuthController extends Controller
 
         if (auth()->user()->email_verified_at != null) {
             $accessToken = auth()->user()->createToken('authToken')->accessToken;
-            return response(['user' => auth()->user(), 'roles' => auth()->user()->roles,'team_members'=>auth()->user()->children,'team_leader'=>auth()->user()->_parent,'access_token' => $accessToken]);
+            return response(['user' => auth()->user(), 'access_token' => $accessToken]);
         } else {
             return 'your Email is not Verified';
         }
