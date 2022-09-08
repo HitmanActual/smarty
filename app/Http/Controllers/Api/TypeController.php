@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+use App\Traits\ResponseTrait;
 use App\Type;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class TypeController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,8 @@ class TypeController extends Controller
     public function index()
     {
         //
+        $types = Type::all();
+        return $this->successResponse($types,Response::HTTP_OK);
     }
 
     /**
