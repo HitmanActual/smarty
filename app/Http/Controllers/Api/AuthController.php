@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         if (auth()->user()->email_verified_at != null) {
             $accessToken = auth()->user()->createToken('authToken')->accessToken;
-            return response(['user' => auth()->user(), 'access_token' => $accessToken]);
+            return response(['user' => auth()->user(),'school'=>auth()->user()->school, 'access_token' => $accessToken]);
         } else {
             return 'your Email is not Verified';
         }
