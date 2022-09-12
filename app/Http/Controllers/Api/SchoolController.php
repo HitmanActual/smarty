@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\School;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class SchoolController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -15,17 +19,11 @@ class SchoolController extends Controller
     public function index()
     {
         //
+        $schools = School::all();
+        return $this->successResponse($schools,Response::HTTP_OK);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -49,16 +47,6 @@ class SchoolController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(School $school)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

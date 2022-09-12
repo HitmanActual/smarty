@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\SchoolController;
 use App\Http\Controllers\Api\TypeController;
-use App\Http\Controllers\SchoolController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

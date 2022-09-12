@@ -13,4 +13,9 @@ class Type extends Model
         'name',
     ];
 
+    public function schools(){
+        return $this->belongsToMany(School::class);
+    }
+
+
 }
