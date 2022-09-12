@@ -17,5 +17,9 @@ class Type extends Model
         return $this->belongsToMany(School::class);
     }
 
+    public function grade(){
+        return $this->hasMany(Grade::class);
+    }
+
 
 }
