@@ -38,6 +38,7 @@ Route::group(['prefix' => 'types'], function () {
 Route::group(['prefix' => 'schools'], function () {
 
     Route::get('/', [SchoolController::class, 'index']);
+    Route::post('/', [SchoolController::class, 'store']);
 
 });
 
